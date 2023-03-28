@@ -44,8 +44,7 @@ int _printf(const char *format, ...)
 				break;
 
 /* Si le spécificateur est "%", on imprime simplement un pourcentage */
-				case '\0':
-				
+				case '%':
 				putchar('%');
 				++count;
 				break;
