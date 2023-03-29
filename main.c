@@ -9,6 +9,7 @@
  */
 int main(void)
 {
+	int number = 53;
      _printf("Let's try to printf a simple sentence.\n");
     printf("Let's try to printf a simple sentence.\n");
     _printf("Character:[%c]\n", 'H');
@@ -17,5 +18,8 @@ int main(void)
     printf("String:[%s]\n", "I am a string !");
 	_printf("Test 100% s'affiche ??\n");
 	_printf("Bonjour % %%\n");
+
+	_printf("Bonjour %d %%\n", number);
+
     return (0);
 }

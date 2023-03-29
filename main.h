@@ -1,5 +1,5 @@
-#ifndef PROTOTYPE_H
-#define PROTOTYPE_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /******** Bibliothèque **********/
 #include <stdio.h>
@@ -7,12 +7,13 @@
 #include <string.h>
 #include <stdarg.h>
 
-/******** Function prototypes **********/
-int _printf(const char *format, ...);
-
-typedef struct {
+/******** Struct _printf **********/
+typedef struct _type{
     char *specifier;
     int (*printFunction)(va_list);
 } _printfType;
+
+/******** Function prototypes **********/
+int _printf(const char *format, ...);
 
 #endif
