@@ -15,5 +15,6 @@ typedef struct _type{
 
 /******** Function prototypes **********/
 int _printf(const char *format, ...);
+int _putchar(char c);
 
 #endif
