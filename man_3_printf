@@ -17,7 +17,7 @@ Upon successful return, these functions return the number of
        characters printed
 
 .SH ATTRIBUTES
-For an explanation
+For an explanations
 .TP
 .BR Interface | Attribute | Value
 
