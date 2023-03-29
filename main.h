@@ -10,4 +10,9 @@
 /******** Function prototypes **********/
 int _printf(const char *format, ...);
 
+typedef struct {
+    char *specifier;
+    int (*printFunction)(va_list);
+} _printfType;
+
 #endif
