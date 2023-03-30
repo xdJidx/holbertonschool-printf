@@ -12,16 +12,22 @@ int main(void)
 	char c ='Z';
 	char monString[55] = "Bonjour, je suis la variable String avec 54 caracters";
 
-     _printf("Let's try to printf a simple sentence.\n");
-    printf("Let's try to printf a simple sentence.\n");
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-	_printf("Test 100% s'affiche ??\n");
-	_printf("Bonjour %s %%\n", monString);
+     printf("Printf => Let's try to printf a simple sentence.\n");
+    _printf("_Printf => Let's try to printf a simple sentence.\n\n");
 
-	_printf("Bonjour %c %%\n", c);
-	printf("Bonjour %c %%\n", c);
+    printf("Printf => Character:[%c]\n", 'H');
+    _printf("_Printf => Character:[%c]\n\n", 'H');
+
+    printf("Printf => String:[%s]\n", "I am a string !");
+    _printf("_Printf => String:[%s]\n\n", "I am a string !");
+
+	printf("Printf => Test 200%% s'affiche ??\n");
+	_printf("_Printf => Test 200%% s'affiche ??\n\n");
+
+	printf("Printf => Bonjour %s %%\n", monString);
+	_printf("_Printf => Bonjour %s %%\n\n", monString);
+
+	printf("Printf => Bonjour %c %%\n", c);
+	_printf("_Printf => Bonjour %c %%\n\n", c);
     return (0);
 }
