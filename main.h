@@ -8,6 +8,11 @@
 #include <stdarg.h>
 
 /******** Struct _printf **********/
+/**
+* struct format - This is a typedef struct.
+* @opt: Pointer type char.
+* @call_func: Pointer to call the function.
+*/
 typedef struct format
 {
 	char *opt;
