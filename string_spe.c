@@ -47,7 +47,7 @@ int set_char(va_list valist)
 }
 
 /**
-* print_percent - Prints a percent symbol
+* print_percent - Prints a percent
 * @valist: list of arguments
 * Return: Will return the amount of characters printed.
 */
