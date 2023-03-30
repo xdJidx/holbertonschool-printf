@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	va_list varPrintf;
 	const char *BrowseToChar = format;
-	int index = 0;
+	int index = 0, j = 0;
 
 	printf_type funcs[] = {
 		{"c", print_char},
@@ -26,9 +26,9 @@ int _printf(const char *format, ...)
 		if (*BrowseToChar == '%')
 		{
 			++BrowseToChar;
-			while (funcs[index].symbole != NULL && *(funcs[index].symbole) != *s)
+			while (funcs[index].symbol != NULL && *(funcs[index].symbol) != *format)
 		    	index++;
-			return (ops[index].print);
+			return (funcs[index].print);
 
 		}
 	
@@ -41,4 +41,6 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(varPrintf);
+
+	return (0);
 }
