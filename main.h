@@ -14,7 +14,7 @@ typedef struct format
 	int (*call_func)(va_list);
 } format_t;
 
-/******** Function prototypes *********/
+/******** Function prototypes **********/
 int _printf(const char *format, ...);
 int parse_format(const char *format, format_t get_opt[], va_list valist);
 int _putchar(char c);
