@@ -2,36 +2,33 @@
 
 <img src="https://www.zupimages.net/up/23/13/7g7z.png" width="100%"><br><br>
 
-<br>
-
 # Resources
 
 > This project consists of redesigning the printf function.  <br>
 
-- printf; Is an external function included in the library of  
-C standard functions. It is used to display information from the program on the screen.  
+- printf 
+> Is an external function included in the library of C standard functions.  
+It is used to display information from the program on the screen.  
 It takes a variable number of arguments: Its first argument is a character string specifying the display format.  
 The following arguments are the values ​​that should be displayed.  
-It is the content of the format that allows to say how the following arguments will be displayed: 
-	- printf(format, arg1, ... , argN); <br>
+It is the content of the format that allows to say how the following arguments will be displayed:  
+- 	printf("Hello Holberton");  
 
 > We are going to rewrite this function which we will name: _printf.
-
-<br>
+- _printf("Hi everyone !");
 
 ## Tableau and Organigramme:
 
-This table represents all the functions found in the file [string_spe.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/string_spe.c) | Updates may be added...
+- This table represents all the functions found in the file [string_spe.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/string_spe.c) | Updates may be added...
+
 |Specifiers|Functions|Description| 
 |--|--|--|
 |c|set_char|print just a char| 
 |s|set_string|print a string| 
 |d|set_decimal|print a number in base 10|
-|i|set_decimal|print a number in base 10|
+|i|set_decimal|print a number in base 10|  
 
-<br>
-
-> This image represents our action plan.
+- This image represents our action plan.
 
 <br>
 
