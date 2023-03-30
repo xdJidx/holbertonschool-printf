@@ -10,36 +10,44 @@
 int _printf(const char *format, ...)
 {
 	va_list varPrintf;
-	const char *BrowseToChar = format;
-	int index = 0, j = 0;
+	
+	int indexFormat = 0, lenght = 0, indexOpt = 0;
 
-	printf_type funcs[] = {
+	format_t funcs[] = {
 		{"c", print_char},
 		{"s", print_string},
-		{"NULL", "NULL"}
+		{NULL, NULL}
 	};
 
 	va_start (varPrintf, format);
 
-	for (; *BrowseToChar != '\0'; ++BrowseToChar) 
+	for (; format[indexFormat] != '\0'; indexFormat++) 
 	{
-		if (*BrowseToChar == '%')
+		if (format[indexFormat] == '%')
 		{
-			++BrowseToChar;
-			while (funcs[index].symbol != NULL && *(funcs[index].symbol) != *format)
-		    	index++;
-			return (funcs[index].print);
+			for(; funcs[indexOpt].opt != NULL; indexOpt++)
+			{
+				if(format[IndexFormat + 1] == funcs[indexOpt].opt[0])
+				{
+					count = funcs[IndexOpt].call_func(valist);
+					if (count == -1)
+					{
+						return (-1);
+					}
+					lenght += count;
+					break;
+				}
+			}
 
 		}
-	
-	
-	
+		else
+		{
+			putchar(format[indexformat]);
+			lenght++;
+		}
 
-
-
-		putchar(*BrowseToChar);
 	}
-
+	return (lenght);
 	va_end(varPrintf);
 
 	return (0);

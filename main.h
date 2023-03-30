@@ -13,9 +13,9 @@ int _printf(const char *format, ...);
 /******** Struct _printf **********/
 typedef struct _printerf
 {
-	char *symbol;
-	void (*print)(va_list varPrintf);
-} printf_type;
+	char *opt;
+	void (*call_func)(va_list varPrintf);
+} format_t;
 
 
 #endif
