@@ -11,6 +11,7 @@ int main(void)
 {
 	char c ='Z';
 	char monString[55] = "Bonjour, je suis la variable String avec 54 caracters";
+	int len, len2;
 
      printf("Printf => Let's try to printf a simple sentence.\n");
     _printf("_Printf => Let's try to printf a simple sentence.\n\n");
@@ -29,5 +30,16 @@ int main(void)
 
 	printf("Printf => Bonjour %c %%\n", c);
 	_printf("_Printf => Bonjour %c %%\n\n", c);
-    return (0);
+
+	len = _printf("%c", '\0');
+	len2 = printf("%c", '\0');
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+
+	return (0);
 }
