@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	format_t get_opt[] = {
 		{"c", set_char},
 		{"s", set_string},
+		{"d", set_decimal},
+		{"i", set_decimal},
 		{NULL, NULL}
 	};
 
