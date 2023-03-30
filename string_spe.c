@@ -36,9 +36,9 @@ int set_char(va_list valist)
 
 	string = va_arg(valist, int);
 
-	if (string == '\0')
+	if (string == 0)
 	{
-		return (0);
+		string = '\0';
 	}
 
 	_putchar(string);
