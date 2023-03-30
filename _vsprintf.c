@@ -29,6 +29,9 @@ int parse_format(const char *format, format_t get_opt[], va_list valist)
 					break;
 				}
 			}
+			if (format[indexFormat] == '\0')
+				break;
+
 			if (get_opt[indexOpt].opt == NULL && format[indexFormat + 1] != ' ')
 			{
 				if (format[indexFormat + 1] != '\0')
