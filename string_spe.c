@@ -51,11 +51,6 @@ int set_char(va_list valist)
 * @valist: arguments passed
 * Return: length of integers
 */
-/**
-* set_decimal- function that returns an int to signed decimal
-* @valist: arguments passed
-* Return: length of integers
-*/
 int set_decimal(va_list valist)
 {
 	int index, diviseur, lengt;
@@ -91,7 +86,7 @@ int set_decimal(va_list valist)
 
 /**
 * length_of_integer - function that returns an int to signed decimal
-* @n: integer
+* @number: integer
 * Return: length of the integer
 */
 int length_of_integer(int number)
