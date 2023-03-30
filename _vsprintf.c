@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
 * parse_format - Receives the main string and all the necessary parameters to
 * print a formated string.
@@ -22,16 +21,13 @@ int parse_format(const char *format, format_t get_opt[], va_list valist)
 				{
 					count = get_opt[indexOpt].call_func(valist);
 					if (count == -1)
-					{
 						return (-1);
-					}
 					total_characters += count;
 					break;
 				}
 			}
 			if (format[indexFormat] == '\0')
 				break;
-
 			if (get_opt[indexOpt].opt == NULL && format[indexFormat + 1] != ' ')
 			{
 				if (format[indexFormat + 1] != '\0')
@@ -53,4 +49,3 @@ int parse_format(const char *format, format_t get_opt[], va_list valist)
 	}
 	return (total_characters);
 }
-
