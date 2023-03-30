@@ -2,7 +2,7 @@
 
 <img src="https://www.zupimages.net/up/23/13/7g7z.png" width="100%"><br><br>
 
-# Resources
+## Resources
 
 > This project consists of redesigning the printf function.  <br>
 
@@ -16,6 +16,8 @@ It is the content of the format that allows to say how the following arguments w
 
 > We are going to rewrite this function which we will name: _printf.
 - _printf("Hi everyone !");
+
+--------------------
 
 ## Tableau and Organigramme:
 
@@ -34,15 +36,14 @@ It is the content of the format that allows to say how the following arguments w
 
 <img src="https://www.zupimages.net/up/23/13/d2sq.png" width="100%"><br><br>
 
-<br>
-
 ## Read or Watch: 
 
 - [Approaching a Project](https://intranet.hbtn.io/concepts/881)
 - [Group Projects](https://intranet.hbtn.io/concepts/893)
 - [Pair Programming - How To](https://intranet.hbtn.io/concepts/894)
 - [Flowcharts](https://intranet.hbtn.io/concepts/895)
-<br><br>
+
+--------------------
 
 ## Man or Help
 > `man_3_printf` = Being created...
@@ -63,6 +64,7 @@ It is the content of the format that allows to say how the following arguments w
 - Don’t forget to push your header file
 - All your header files should be include guarded
 - Note that we will not provide the `_putchar` function for this project
+
 --------------------
 
 ## Authorized functions and macros
