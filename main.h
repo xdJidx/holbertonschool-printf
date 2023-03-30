@@ -1,5 +1,5 @@
-#ifndef PROTOTYPE_H
-#define PROTOTYPE_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /******** Bibliothèque **********/
 #include <stdio.h>
@@ -7,12 +7,19 @@
 #include <string.h>
 #include <stdarg.h>
 
+/******** Struct _printf **********/
+typedef struct format
+{
+	char *opt;
+	int (*call_func)(va_list);
+} format_t;
+
 /******** Function prototypes **********/
 int _printf(const char *format, ...);
-
-typedef struct {
-    char *specifier;
-    int (*printFunction)(va_list);
-} _printfType;
+int parse_format(const char *format, format_t get_opt[], va_list valist);
+int _putchar(char c);
+int set_char(va_list valist);
+int set_string(va_list valist);
+int print_percent(__attribute__((unused))va_list valist);
 
 #endif
