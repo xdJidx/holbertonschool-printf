@@ -26,11 +26,11 @@ It is the content of the format that allows to say how the following arguments w
 |c|set_char|print just a char| 
 |s|set_string|print a string| 
 |d|set_decimal|print a number in base 10|
-|i|set_decimal|print a number in base 10|  
-
-- This image represents our action plan.
+|i|set_decimal|print a number in base 10|
 
 <br>
+
+- This image represents our action plan.
 
 <img src="https://www.zupimages.net/up/23/13/d2sq.png" width="100%"><br><br>
 
