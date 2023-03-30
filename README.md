@@ -81,13 +81,10 @@ It is the content of the format that allows to say how the following arguments w
 
 --------------------
 
-<br>
-
-# Files
+## Programs Files
 ### [_printf.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/_printf.c)
 <details>
 <summary>File</summary>
-<br>
 
 ```c
 #include "main.h"
@@ -124,14 +121,12 @@ int _printf(const char *format, ...)
 }
 ```
 </details>
-<br>
 
 --------------------
 
 ### [_putchar.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/_putchar.c)
 <details>
 <summary>File</summary>
-<br>
 
 ```c
 #include <unistd.h>
@@ -149,14 +144,12 @@ int _putchar(char c)
 }
 ```
 </details>
-<br>
 
 --------------------
 
 ### [_vsprintf](https://github.com/xdJidx/holbertonschool-printf/blob/main/_vsprintf.c)
 <details>
 <summary>File</summary>
-<br>
 
 ```c
 #include "main.h"
@@ -212,14 +205,12 @@ int parse_format(const char *format, format_t get_opt[], va_list valist)
 }
 ```
 </details>
-<br>
 
 --------------------
 
 ### [main.h](https://github.com/xdJidx/holbertonschool-printf/blob/main/main.h)
 <details>
 <summary>File</summary>
-<br>
 
 ```h
 #ifndef MAIN_H
@@ -258,14 +249,12 @@ int get_length(char *string __attribute__((__unused__)), va_list valist);
 
 ```
 </details>
-<br>
 
 --------------------
 
 ### [string_spe.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/string_spe.c)
 <details>
 <summary>File</summary>
-<br>
 
 ```c
 #include "main.h"
@@ -387,7 +376,6 @@ int print_percent(__attribute__((unused))va_list valist)
 }
 ```
 </details>
-<br>
 
 ------------------------------
 
