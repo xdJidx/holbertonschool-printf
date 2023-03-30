@@ -16,6 +16,7 @@ typedef struct format
 
 /******** Function prototypes **********/
 int _printf(const char *format, ...);
+int parse_format(const char *format, format_t get_opt[], va_list valist);
 int _putchar(char c);
 int set_char(va_list valist);
 int set_string(va_list valist);

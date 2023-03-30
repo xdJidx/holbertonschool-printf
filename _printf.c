@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
 
-	va_star(valist, format);
+	va_start(valist, format);
 	count = parse_format(format, get_opt, valist);
 	va_end(valist);
 
