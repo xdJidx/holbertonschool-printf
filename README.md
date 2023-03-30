@@ -1,7 +1,41 @@
-# <p align="Center">C - printf</p>
+# <p align="Center">C - _printf</p>
+
+<img src="https://www.zupimages.net/up/23/13/7g7z.png" width="100%"><br><br>
+
+<br>
 
 # Resources
-Description...
+
+> This project consists of redesigning the printf function.  <br>
+
+- printf; Is an external function included in the library of  
+C standard functions. It is used to display information from the program on the screen.  
+It takes a variable number of arguments: Its first argument is a character string specifying the display format.  
+The following arguments are the values ​​that should be displayed.  
+It is the content of the format that allows to say how the following arguments will be displayed: 
+	- printf(format, arg1, ... , argN); <br>
+
+> We are going to rewrite this function which we will name: _printf.
+
+<br>
+
+## Tableau and Organigramme:
+
+This table represents all the functions found in the file [string_spe.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/string_spe.c) | Updates may be added...
+|Specifiers|Functions|Description| 
+|--|--|--|
+|c|set_char|print just a char| 
+|s|set_string|print a string| 
+|d|set_decimal|print a number in base 10|
+|i|set_decimal|print a number in base 10|
+
+<br>
+
+> This image represents our action plan.
+
+<br>
+
+<img src="https://www.zupimages.net/up/23/13/d2sq.png" width="100%"><br><br>
 
 <br>
 
@@ -14,7 +48,7 @@ Description...
 <br><br>
 
 ## Man or Help
-> `man_3_printf` = En cours de création...
+> `man_3_printf` = Being created...
 
 --------------------
 
@@ -48,17 +82,147 @@ Description...
 
 <br>
 
-## Requirements
-
-# Prototype
-### [main.h](lien)
+# Files
+### [_printf.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/_printf.c)
 <details>
-<summary>Prototype File - main.h</summary>
+<summary>File</summary>
+<br>
+
+```c
+#include "main.h"
+
+/**
+* _printf - function that prints based on format specifier
+* @format: takes in format specifier
+* Return: return pointer to index
+*/
+
+int _printf(const char *format, ...)
+{
+	va_list valist;
+	int count;
+	format_t get_opt[] = {
+		{"c", set_char},
+		{"s", set_string},
+		{"d", set_decimal},
+		{"i", set_decimal},
+		{"%", print_percent},
+		{NULL, NULL}
+	};
+
+	if (!format)
+	{
+		return (-1);
+	}
+
+	va_start(valist, format);
+	count = parse_format(format, get_opt, valist);
+	va_end(valist);
+
+	return (count);
+}
+```
+</details>
+<br>
+
+--------------------
+
+### [_putchar.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/_putchar.c)
+<details>
+<summary>File</summary>
+<br>
+
+```c
+#include <unistd.h>
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+```
+</details>
+<br>
+
+--------------------
+
+### [_vsprintf](https://github.com/xdJidx/holbertonschool-printf/blob/main/_vsprintf.c)
+<details>
+<summary>File</summary>
+<br>
+
+```c
+#include "main.h"
+/**
+* parse_format - Receives the main string and all the necessary parameters to
+* print a formated string.
+* @format: A string containing all the desired characters.
+* @get_opt: A list of all the posible functions.
+* @valist: A list containing all the argumentents passed to the program.
+* Return: A total count of the characters printed.
+*/
+int parse_format(const char *format, format_t get_opt[], va_list valist)
+{
+	int indexFormat, indexOpt, count, total_characters = 0;
+
+	for (indexFormat = 0; format[indexFormat] != '\0'; indexFormat++)
+	{
+		if (format[indexFormat] == '%')
+		{
+			for (indexOpt = 0; get_opt[indexOpt].opt != NULL; indexOpt++)
+			{
+				if (format[indexFormat + 1] == get_opt[indexOpt].opt[0])
+				{
+					count = get_opt[indexOpt].call_func(valist);
+					if (count == -1)
+						return (-1);
+					total_characters += count;
+					break;
+				}
+			}
+			if (format[indexFormat] == '\0')
+				break;
+			if (get_opt[indexOpt].opt == NULL && format[indexFormat + 1] != ' ')
+			{
+				if (format[indexFormat + 1] != '\0')
+				{
+					_putchar(format[indexFormat]);
+					_putchar(format[indexFormat + 1]);
+					total_characters = total_characters + 2;
+				}
+				else
+					return (-1);
+			}
+			indexFormat = indexFormat + 1;
+		}
+		else
+		{
+			_putchar(format[indexFormat]);
+			total_characters++;
+		}
+	}
+	return (total_characters);
+}
+```
+</details>
+<br>
+
+--------------------
+
+### [main.h](https://github.com/xdJidx/holbertonschool-printf/blob/main/main.h)
+<details>
+<summary>File</summary>
 <br>
 
 ```h
-#ifndef PROTOTYPE_H
-#define PROTOTYPE_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /******** Bibliothèque **********/
 #include <stdio.h>
@@ -66,87 +230,167 @@ Description...
 #include <string.h>
 #include <stdarg.h>
 
+/******** Struct _printf **********/
+/**
+* struct format - This is a typedef struct.
+* @opt: Pointer type char.
+* @call_func: Pointer to call the function.
+*/
+typedef struct format
+{
+	char *opt;
+	int (*call_func)(va_list);
+} format_t;
+
 /******** Function prototypes **********/
 int _printf(const char *format, ...);
-
-typedef struct {
-    char *specifier;
-    int (*printFunction)(va_list);
-} _printfType;
+int parse_format(const char *format, format_t get_opt[], va_list valist);
+int _putchar(char c);
+int set_char(va_list valist);
+int set_string(va_list valist);
+int set_decimal(va_list valist);
+int length_of_integer(int n);
+int print_percent(__attribute__((unused))va_list valist);
+int get_length(char *string __attribute__((__unused__)), va_list valist);
 
 #endif
+
 ```
 </details>
 <br>
 
-# TASKS
+--------------------
 
-### [0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life](Lien)
-
-> Write a function that produces output according to a format.
-
-- Prototype: `int _printf(const char *format, ...);`
-- Returns: the number of characters printed (excluding the null byte used to end output to strings)
-- write output to stdout, the standard output stream
-- `format` is a character string. The format string is composed of zero or more directives. See `man 3 printf` for more detail. You need to handle the following conversion specifiers:
-	- `c`
-	- `s`
-	- `%`
-- You don’t have to reproduce the buffer handling of the C library `printf` function
-- You don’t have to handle the flag characters
-- You don’t have to handle field width
-- You don’t have to handle precision
-- You don’t have to handle the length modifiers
-
+### [string_spe.c](https://github.com/xdJidx/holbertonschool-printf/blob/main/string_spe.c)
 <details>
-<summary>Nos Retour</summary>
+<summary>File</summary>
 <br>
 
-J'ai commencé par faire le fichier _prinf en utilisant la structure de contrôle `Switch`. Celle-ci semble fonctionne comme nous le souhaitons, mais manque de peau, il comporte un peu trop de ligne pour `bétty` qui n'en veut seulement `40`.
+```c
+#include "main.h"
 
-Nous allons modifier le code pour le repartir en plusieurs fonction dans un fichier nommé à titre d'exemple `get_op_functions.`
+/**
+* set_string - specificer s
+* @valist: valist
+* Return: total characters
+*/
+int set_string(va_list valist)
+{
+	int index;
+	char *string;
 
+	string = va_arg(valist, char*);
+
+	if (string == NULL)
+	{
+		string = "(null)";
+	}
+
+	for (index = 0; string[index] != '\0'; index++)
+	{
+		_putchar(string[index]);
+	}
+
+	return (index);
+}
+
+/**
+* set_char - specificer c
+* @valist: valist
+* Return: void
+*/
+int set_char(va_list valist)
+{
+	char string;
+
+	string = va_arg(valist, int);
+
+	if (string == 0)
+	{
+		string = '\0';
+	}
+
+	_putchar(string);
+
+	return (1);
+}
+
+/**
+* set_decimal- function that returns an int to signed decimal
+* @valist: arguments passed
+* Return: length of integers
+*/
+int set_decimal(va_list valist)
+{
+	int index, diviseur, lengt;
+	unsigned int num;
+
+	index = va_arg(valist, int);
+	diviseur = 1;
+	lengt = 0;
+	if (index < 0)
+	{
+		lengt += _putchar('-');
+		num = index * -1;
+	}
+	else
+	{
+		num = index;
+	}
+
+	for (; num / diviseur > 9;)
+	{
+		diviseur *= 10;
+	}
+
+	for (; diviseur != 0;)
+	{
+		lengt += _putchar('0' + (num / diviseur));
+		num %= diviseur;
+		diviseur /= 10;
+	}
+
+	return (lengt);
+}
+
+/**
+* length_of_integer - function that returns an int to signed decimal
+* @number: integer
+* Return: length of the integer
+*/
+int length_of_integer(int number)
+{
+	if (number < 0)
+	{
+		return (1 + length_of_integer(-number));
+	}
+	else if (number < 10)
+	{
+		return (1);
+	}
+	else
+	{
+		return (1 + length_of_integer(number / 10));
+	}
+}
+
+/**
+* print_percent - Prints a percent
+* @valist: list of arguments
+* Return: Will return the amount of characters printed.
+*/
+int print_percent(__attribute__((unused))va_list valist)
+{
+	_putchar('%');
+	return (1);
+}
+```
 </details>
-
-------------------------------
-
-### [1. Education is when you read the fine print. Experience is what you get if you don't](Lien)
-
-> Handle the following conversion specifiers:
-
-- `d`
-- `i`
-- You don’t have to handle the flag characters
-- You don’t have to handle field width
-- You don’t have to handle precision
-- You don’t have to handle the length modifiers
-
-
-<details>
-<summary>Nos Retour</summary>
 <br>
-
-	Void
-
-</details>
-
-------------------------------
-
-### [2. Just because it's in print doesn't mean it's the gospel](Lien)
-
-> Create a man page for your function.
-
-<details>
-<summary>Nos Retour</summary>
-<br>
-
-Nous avons mis en place le man printf qui porte le nom man_3_printf, il est en cours de création, mais les premiers prototypes de celui-ci fonctionne.
-
-</details>
 
 ------------------------------
 
 # Author
-ROGERET Kevin<br>
+ROGERET Kevin : **[Air-KS](https://github.com/Air-KS).** <br>
 > Project carried out within the framework of the school **[Holberton School](https://www.holbertonschool.com/).**<br>
 
