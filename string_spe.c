@@ -47,6 +47,70 @@ int set_char(va_list valist)
 }
 
 /**
+* set_decimal- function that returns an int to signed decimal
+* @valist: arguments passed
+* Return: length of integers
+*/
+/**
+* set_decimal- function that returns an int to signed decimal
+* @valist: arguments passed
+* Return: length of integers
+*/
+int set_decimal(va_list valist)
+{
+	int index, diviseur, lengt;
+	unsigned int num;
+
+	index = va_arg(valist, int);
+	diviseur = 1;
+	lengt = 0;
+	if (index < 0)
+	{
+		lengt += _putchar('-');
+		num = index * -1;
+	}
+	else
+	{
+		num = index;
+	}
+
+	for (; num / diviseur > 9;)
+	{
+		diviseur *= 10;
+	}
+
+	for (; diviseur != 0;)
+	{
+		lengt += _putchar('0' + (num / diviseur));
+		num %= diviseur;
+		diviseur /= 10;
+	}
+
+	return (lengt);
+}
+
+/**
+* length_of_integer - function that returns an int to signed decimal
+* @n: integer
+* Return: length of the integer
+*/
+int length_of_integer(int number)
+{
+	if (number < 0)
+	{
+		return (1 + length_of_integer(-number));
+	}
+	else if (number < 10)
+	{
+		return (1);
+	}
+	else
+	{
+		return (1 + length_of_integer(number / 10));
+	}
+}
+
+/**
 * print_percent - Prints a percent
 * @valist: list of arguments
 * Return: Will return the amount of characters printed.
