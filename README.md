@@ -36,6 +36,8 @@ It is the content of the format that allows to say how the following arguments w
 
 <img src="https://www.zupimages.net/up/23/13/d2sq.png" width="100%"><br><br>
 
+--------------------
+
 ## Read or Watch: 
 
 - [Approaching a Project](https://intranet.hbtn.io/concepts/881)
