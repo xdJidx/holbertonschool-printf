@@ -3,48 +3,84 @@
 _printf \- Print string
 .SH SYNOPSIS
 .B #include <stdio.>
-.B #include <stdarg.h>
+.br
 .B #include <stdlib.h>
+.br
 .B #include <string.h>
+.br
 .B #include <unistd.h>
+.br
 
-.I int _printf(const char *format, ...);
-.I int parse_format(const char *format, format_t get_opt[], va_list valist);
-.I int _putchar(char c);
-.I int set_char(va_list valist);
-.I int set_string(va_list valist);
-.I int set_decimal(va_list valist);
-.I int length_of_integer(int n);
-.I int print_percent(__attribute__((unused))va_list valist);
-.I int get_length(char *string __attribute__((__unused__)), va_list valist);
+
+.B int _printf(const char *
+.I format
+.B ,...);
+.br
+.B int parse_format(const char *
+.I format
+.B , format_t
+.I valist
+.B );
+.br
+.B int _putchar(char 
+.I c
+.B );
+.br
+.B int set_char(va_list 
+.I valist
+.B );
+.br
+.B int set_string(va_list 
+.I valist
+.B );
+.br
+.B int set_decimal(va_list 
+.I valist
+.B );
+.br
+.B int length_of_integer(int 
+.I n
+.B );
+.br
+.B int print_percent(__attribute__((unused))va_list 
+.I valist
+.B );
+.br
+.B int get_length(char *
+.I string 
+.B __attribute__((__unused__)), va_list 
+.I valist
+.B );
+.br
 
 .SH DESCRIPTION
-.B test.sh
-The functions in the _printf() family produce output according to
-       a format as described below.
+This function write the output under the control of a
+       format string that specifies how subsequent arguments are converted for output.
+
+.B Format of the format string
+.br
+The format string is a character string, beginning and ending in
+       its initial shift state, if any.
+Each conversion specification is
+       introduced by the character %, and ends with a conversion
+       specifier.
 
 .SH RETURN VALUE
 Upon successful return, these functions return the number of
        characters printed
-
-.SH ATTRIBUTES
-For an explanations
-.TP
-.BR Interface | Attribute | Value
-
-.SH CONFORMING TO
-
+If an output error is encountered, a negative value is returned.
 
 .SH NOTES
-
+Unlike the printf function, the flags, Field width, Precision, Length modifier and Conversion specifiers of the initial printf function, are not added in our _printf function.
 
 .SH BUGS
-Element after %
+Not bug found rate now.
 
 .SH EXEMPLES
-.TP
-.BR %%
-le deuxième pourcent n'apparait pas
+Need more test to found an exemple.
+
+.SH COLOPHON
+This page was written as part of the holberton school training for learning purposes. Any resemblance to another page is purely intentional.
 
 .SH Authors
 .ce 
